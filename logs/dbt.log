@@ -1,0 +1,45 @@
+[0m20:26:38.440420 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1081aec30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1081da3f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1081da3c0>]}
+
+
+============================== 20:26:38.458840 | 130ba4c6-fee5-479d-a609-1545e8c2bffd ==============================
+[0m20:26:38.458840 [info ] [MainThread]: Running with dbt=1.10.11
+[0m20:26:38.459145 [debug] [MainThread]: running dbt with arguments {'use_experimental_parser': 'False', 'log_path': 'logs', 'log_cache_events': 'False', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'no_print': 'None', 'debug': 'False', 'log_format': 'default', 'indirect_selection': 'eager', 'use_colors': 'True', 'send_anonymous_usage_stats': 'True', 'empty': 'None', 'write_json': 'True', 'cache_selected_only': 'False', 'quiet': 'False', 'static_parser': 'True', 'fail_fast': 'False', 'warn_error': 'None', 'version_check': 'True', 'target_path': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt init goodnature_analysis', 'printer_width': '80', 'profiles_dir': '/Users/jacktoke/.dbt'}
+[0m20:26:38.487913 [debug] [MainThread]: Starter project path: /Users/jacktoke/Codes/QUT/qut-data-analytics-duckdb-final/.venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m20:26:38.490892 [info ] [MainThread]: 
+Your new dbt project "goodnature_analysis" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m20:26:38.491070 [info ] [MainThread]: Setting up your profile.
+[0m20:27:04.453812 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 26.049137, "process_in_blocks": "0", "process_kernel_time": 0.101745, "process_mem_max_rss": "130367488", "process_out_blocks": "0", "process_user_time": 0.638094}
+[0m20:27:04.454304 [debug] [MainThread]: Command `dbt init` succeeded at 20:27:04.454224 after 26.05 seconds
+[0m20:27:04.454783 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108813170>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108eea2a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109183320>]}
+[0m20:27:04.455200 [debug] [MainThread]: Flushing usage events
+[0m20:27:05.532212 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:15:44.729102 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1061ec5c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1076354c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107635100>]}
+
+
+============================== 20:15:44.762128 | 3fdfe314-f0a2-4bfe-9a06-1a24f2e3ea0c ==============================
+[0m20:15:44.762128 [info ] [MainThread]: Running with dbt=1.10.11
+[0m20:15:44.764482 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'static_parser': 'True', 'indirect_selection': 'eager', 'log_path': 'logs', 'version_check': 'True', 'quiet': 'False', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'target_path': 'None', 'debug': 'False', 'printer_width': '80', 'invocation_command': 'dbt seed --select australian_suburbs', 'partial_parse': 'True', 'warn_error': 'None', 'cache_selected_only': 'False', 'use_colors': 'True', 'profiles_dir': '/Users/jacktoke/.dbt', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'log_format': 'default', 'empty': 'None', 'no_print': 'None', 'introspect': 'True'}
+[0m20:15:44.765270 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/jacktoke/Codes/QUT/qut-data-analytics-duckdb-final/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m20:15:44.766672 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 0.08120613, "process_in_blocks": "0", "process_kernel_time": 0.361657, "process_mem_max_rss": "150913024", "process_out_blocks": "0", "process_user_time": 1.511795}
+[0m20:15:44.767894 [debug] [MainThread]: Command `dbt seed` failed at 20:15:44.767477 after 0.08 seconds
+[0m20:15:44.768456 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106887230>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107634c80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107635460>]}
+[0m20:15:44.768799 [debug] [MainThread]: Flushing usage events
+[0m20:15:46.050938 [debug] [MainThread]: An error was encountered while trying to flush usage events

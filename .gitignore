@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+goodnature_analysis/seeds/australian_suburbs.csv
+goodnature_analysis/seeds/goodnature_trap_data.csv
+goodnature_analysis/seeds/nz_addresses.csv

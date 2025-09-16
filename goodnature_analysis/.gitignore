@@ -5,3 +5,4 @@ logs/
 .env
 .venv
 .python-version
+dbt_internal_packages/

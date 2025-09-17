@@ -1,0 +1,22 @@
+version: 2
+
+seeds:
+  - name: nz_suburb_locality
+    description: "The geo data of each suburb or locality in New Zealand"
+    columns:
+        - name: WKT
+          data_type: varchar(134217728)
+        - name: id
+          data_type: int
+        - name: parent_id
+          data_type: int
+        - name: name
+          data_type: string
+        - name: type
+          data_type: string
+        - name: start_date
+          data_type: string
+        - name: name_ascii
+          data_type: string
+    config:
+        schema: public

@@ -12,6 +12,7 @@ WITH trap_data AS (
         INSTALLED_AT
     FROM
         {{ ref('stg_trap_data') }}
+    WHERE activity_type = 'STRIKE'
 ),
 
 nz_trap_locations AS (

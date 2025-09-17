@@ -1,8 +1,0 @@
-
-target/
-dbt_packages/
-logs/
-.env
-.venv
-.python-version
-dbt_internal_packages/

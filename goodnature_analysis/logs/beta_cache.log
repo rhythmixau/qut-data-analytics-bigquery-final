@@ -1,0 +1,16 @@
+
+=== RelationCache Final State ===
+Total Schemas: 1
+
+[PARTIAL]  SCHEMA
+   ╭─ Name: `qut-data-analytics-capstone`.`goodnature`
+   ├─ Relations: 1 (individually cached)
+   ├─ Individual Relations:
+   │  ╰ • `qut-data-analytics-capstone`.`goodnature`.`fct_nz_daily_kills` → 1758062502634ms
+   ╰─ Status: Relations cached individually
+
+=== Summary ===
+Complete Schemas: 0
+Partial Schemas: 1
+Total Relations: 1
+

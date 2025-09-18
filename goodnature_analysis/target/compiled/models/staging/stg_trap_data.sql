@@ -1,7 +1,7 @@
 WITH traps AS (
     SELECT
         *
-    FROM GOODNATURE.public.goodnature_trap_data
+    FROM `qut-data-analytics-capstone`.`goodnature`.`goodnature_trap_data`
 )
 SELECT
     id,

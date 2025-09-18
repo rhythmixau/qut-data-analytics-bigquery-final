@@ -3,8 +3,8 @@ SELECT
     l.location_id,
     l.latitude,
     l.longitude
-  FROM GOODNATURE.public.int_trap_locations l
-  LEFT JOIN GOODNATURE.public.dim_nz_locations d ON l.location_id = d.location_id
+  FROM `qut-data-analytics-capstone`.`goodnature`.`int_trap_locations` l
+  LEFT JOIN `qut-data-analytics-capstone`.`goodnature`.`dim_nz_locations` d ON l.location_id = d.location_id
   WHERE d.location_id IS NULL
 ),
 
@@ -14,7 +14,7 @@ aus_locations AS (
     trap_latitude,
     trap_longitude
   FROM
-    GOODNATURE.public.dim_au_locations
+    `qut-data-analytics-capstone`.`goodnature`.`dim_au_locations`
 )
 
 SELECT

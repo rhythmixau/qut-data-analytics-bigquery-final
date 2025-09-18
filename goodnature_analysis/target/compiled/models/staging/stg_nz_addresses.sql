@@ -1,7 +1,7 @@
 WITH addresses AS (
     SELECT
         *
-    FROM GOODNATURE.public.nz_addresses
+    FROM `qut-data-analytics-capstone`.`goodnature`.`nz_addresses`
 )
 SELECT
     WKT,

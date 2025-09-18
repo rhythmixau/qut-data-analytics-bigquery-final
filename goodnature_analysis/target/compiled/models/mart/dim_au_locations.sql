@@ -3,8 +3,8 @@ WITH aus_suburbs AS (
         l.location_id,
         l.latitude,
         l.longitude
-    FROM GOODNATURE.public.int_trap_locations l
-    LEFT JOIN GOODNATURE.public.dim_nz_locations d ON l.location_id = d.location_id
+    FROM `qut-data-analytics-capstone`.`goodnature`.`int_trap_locations` l
+    LEFT JOIN `qut-data-analytics-capstone`.`goodnature`.`dim_nz_locations` d ON l.location_id = d.location_id
     WHERE d.location_id IS NULL
 ),
 
@@ -19,7 +19,7 @@ aus_suburbs_geo AS (
         local_goverment_area,
         latitude,
         longitude
-    FROM GOODNATURE.public.stg_au_suburbs
+    FROM `qut-data-analytics-capstone`.`goodnature`.`stg_au_suburbs`
 )
 
 SELECT
@@ -36,16 +36,16 @@ SELECT
     g.latitude AS suburb_latitude,
     g.longitude AS suburb_longitude,
     ST_DISTANCE(
-    ST_POINT(s.longitude, s.latitude),
-    ST_POINT(g.longitude, g.latitude)
+    ST_GEOGPOINT(s.longitude, s.latitude),
+    ST_GEOGPOINT(g.longitude, g.latitude)
     ) AS distance_in_meters
 FROM
     aus_suburbs AS s
     JOIN
     aus_suburbs_geo AS g
     ON ST_DWITHIN(
-        ST_POINT(s.longitude, s.latitude),
-        ST_POINT(g.longitude, g.latitude),
+        ST_GEOGPOINT(s.longitude, s.latitude),
+        ST_GEOGPOINT(g.longitude, g.latitude),
         40000  -- The radius in meters. Adjust this value based on your data's density.
     )
 QUALIFY ROW_NUMBER() OVER (PARTITION BY s.location_id ORDER BY distance_in_meters ASC) = 1

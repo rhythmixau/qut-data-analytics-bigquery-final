@@ -4,7 +4,7 @@ WITH locations AS (
         DISTINCT
         latitude,
         longitude
-    FROM GOODNATURE.public.stg_trap_data
+    FROM `qut-data-analytics-capstone`.`goodnature`.`stg_trap_data`
 )
 SELECT
     ROW_NUMBER() OVER(ORDER BY longitude) AS location_id,

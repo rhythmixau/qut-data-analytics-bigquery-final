@@ -5,7 +5,7 @@ WITH locations AS (
         location_id,
         latitude,
         longitude
-    FROM GOODNATURE.public.int_trap_locations
+    FROM `qut-data-analytics-capstone`.`goodnature`.`int_trap_locations`
 ), addresses AS (
     SELECT
         address_id,
@@ -19,7 +19,7 @@ WITH locations AS (
         water_body_name,
         longitude,
         latitude
-    FROM GOODNATURE.public.stg_nz_addresses
+    FROM `qut-data-analytics-capstone`.`goodnature`.`stg_nz_addresses`
 )
 SELECT
     loc.location_id,

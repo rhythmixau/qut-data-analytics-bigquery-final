@@ -1,6 +1,6 @@
 WITH trap_records AS (
     SELECT * FROM {{ ref('int_trap_details') }}
-    WHERE ACTIVITY_TYPE = 'STRIKE'
+    WHERE ACTIVITY_TYPE = 'STRIKE' AND STRIKE_AT > '2000-01-01'
 )
 
 SELECT

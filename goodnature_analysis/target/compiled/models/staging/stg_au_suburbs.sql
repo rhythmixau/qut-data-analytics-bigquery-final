@@ -1,5 +1,5 @@
 WITH suburbs AS (
-    SELECT * FROM GOODNATURE.public.australian_suburbs
+    SELECT * FROM `qut-data-analytics-capstone`.`goodnature`.`australian_suburbs`
 )
 SELECT
     ssc_code AS suburb_id,

@@ -1,0 +1,37 @@
+
+
+  create or replace view `qut-data-analytics-capstone`.`goodnature`.`fct_nz_daily_kills`
+  OPTIONS()
+  as WITH trap_records AS (
+    SELECT * FROM `qut-data-analytics-capstone`.`goodnature`.`int_trap_details`
+    WHERE ACTIVITY_TYPE = 'STRIKE' AND STRIKE_AT > '2000-01-01'
+)
+
+SELECT
+    LOCATION_ID,
+    TRAP_ID,
+    ADDRESS_LATITUDE,
+    ADDRESS_LONGITUDE,
+    FULL_ADDRESS,
+    FULL_ROAD_NAME,
+    SUBURB_LOCALITY,
+    TOWN_CITY,
+    TERRITORIAL_AUTHORITY,
+    ACTIVITY_TYPE,
+    FORMAT_DATE('%Y-%m-%d', CAST(STRIKE_AT AS TIMESTAMP)) STRIKED_DATE,
+    COUNT(STRIKE_AT) AS NUM_KILLS,
+    CREATED_BY
+FROM trap_records
+GROUP BY LOCATION_ID,
+    TRAP_ID,
+    ADDRESS_LATITUDE,
+    ADDRESS_LONGITUDE,
+    FULL_ADDRESS,
+    FULL_ROAD_NAME,
+    SUBURB_LOCALITY,
+    TOWN_CITY,
+    TERRITORIAL_AUTHORITY,
+    ACTIVITY_TYPE,
+    STRIKED_DATE,
+    CREATED_BY;
+

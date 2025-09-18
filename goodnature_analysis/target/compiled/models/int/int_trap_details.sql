@@ -11,7 +11,7 @@ WITH trap_data AS (
         BATTERY_LEVEL,
         INSTALLED_AT
     FROM
-        GOODNATURE.public.stg_trap_data
+        `qut-data-analytics-capstone`.`goodnature`.`stg_trap_data`
     WHERE activity_type = 'STRIKE'
 ),
 
@@ -29,7 +29,7 @@ nz_trap_locations AS (
 	ADDRESS_LONGITUDE,
 	ADDRESS_LATITUDE,
 	DISTANCE_IN_METERS
-    FROM GOODNATURE.public.dim_nz_locations
+    FROM `qut-data-analytics-capstone`.`goodnature`.`dim_nz_locations`
 )
 
 SELECT

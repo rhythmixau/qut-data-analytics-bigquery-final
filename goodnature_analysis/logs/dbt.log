@@ -7939,3 +7939,98 @@ GROUP BY LOCATION_ID,
 [0m16:22:30.788024 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 5.9333353, "process_in_blocks": "0", "process_kernel_time": 0.379971, "process_mem_max_rss": "386580480", "process_out_blocks": "0", "process_user_time": 2.404305}
 [0m16:22:30.788257 [debug] [MainThread]: Command `dbt run` succeeded at 16:22:30.788214 after 5.93 seconds
 [0m16:22:30.788426 [debug] [MainThread]: Flushing usage events
+[0m20:06:35.382415 [debug] [MainThread]: Got an exception trying to initialize tracking
+
+
+============================== 20:06:35.399247 | f7ab2537-680a-46d6-95ed-bd58a224b997 ==============================
+[0m20:06:35.399247 [info ] [MainThread]: Running with dbt=1.10.11
+[0m20:06:35.399901 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'log_format': 'default', 'partial_parse': 'True', 'debug': 'False', 'no_print': 'None', 'profiles_dir': '/Users/jacktoke/.dbt', 'version_check': 'True', 'empty': 'False', 'log_path': '/Users/jacktoke/Codes/QUT/qut-data-analytics-duckdb-final/goodnature_analysis/logs', 'invocation_command': 'dbt run --select fct_nz_monthly_kills', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'warn_error': 'None', 'target_path': 'None', 'log_cache_events': 'False', 'indirect_selection': 'eager', 'introspect': 'True', 'quiet': 'False', 'printer_width': '80', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'fail_fast': 'False', 'write_json': 'True'}
+[0m20:06:40.143355 [info ] [MainThread]: Registered adapter: bigquery=1.10.2
+[0m20:06:40.341056 [debug] [MainThread]: checksum: 5335e1629744fab92fa7809c625edbb36f0d7063a879d6215c971798f27e66f9, vars: {}, profile: , target: , version: 1.10.11
+[0m20:06:40.418539 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m20:06:40.418929 [debug] [MainThread]: Partial parsing: updated file: goodnature_analysis://models/mart/fct_nz_monthly_kills.sql
+[0m20:06:40.684227 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/jacktoke/Codes/QUT/qut-data-analytics-duckdb-final/goodnature_analysis/target/manifest.json
+[0m20:06:40.687528 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/jacktoke/Codes/QUT/qut-data-analytics-duckdb-final/goodnature_analysis/target/semantic_manifest.json
+[0m20:06:40.718334 [info ] [MainThread]: Found 10 models, 4 seeds, 888 macros
+[0m20:06:40.719170 [info ] [MainThread]: 
+[0m20:06:40.719384 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m20:06:40.719548 [info ] [MainThread]: 
+[0m20:06:40.719802 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m20:06:40.720249 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_qut-data-analytics-capstone'
+[0m20:06:40.720489 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:06:41.780256 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_qut-data-analytics-capstone, now list_qut-data-analytics-capstone_goodnature)
+[0m20:06:41.780709 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_qut-data-analytics-capstone_goodnature_public'
+[0m20:06:41.780981 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:06:41.781222 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:06:43.029978 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:06:43.033317 [debug] [Thread-1 (]: Began running node model.goodnature_analysis.fct_nz_monthly_kills
+[0m20:06:43.033728 [info ] [Thread-1 (]: 1 of 1 START sql view model goodnature.fct_nz_monthly_kills .................... [RUN]
+[0m20:06:43.034039 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_qut-data-analytics-capstone_goodnature, now model.goodnature_analysis.fct_nz_monthly_kills)
+[0m20:06:43.034244 [debug] [Thread-1 (]: Began compiling node model.goodnature_analysis.fct_nz_monthly_kills
+[0m20:06:43.038032 [debug] [Thread-1 (]: Writing injected SQL for node "model.goodnature_analysis.fct_nz_monthly_kills"
+[0m20:06:43.038506 [debug] [Thread-1 (]: Began executing node model.goodnature_analysis.fct_nz_monthly_kills
+[0m20:06:43.052265 [debug] [Thread-1 (]: Writing runtime sql for node "model.goodnature_analysis.fct_nz_monthly_kills"
+[0m20:06:43.052771 [debug] [Thread-1 (]: On model.goodnature_analysis.fct_nz_monthly_kills: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "goodnature_analysis", "target_name": "dev", "node_id": "model.goodnature_analysis.fct_nz_monthly_kills"} */
+
+
+  create or replace view `qut-data-analytics-capstone`.`goodnature`.`fct_nz_monthly_kills`
+  OPTIONS()
+  as WITH trap_records AS (
+    SELECT * FROM `qut-data-analytics-capstone`.`goodnature`.`int_trap_details`
+    WHERE ACTIVITY_TYPE = 'STRIKE' AND STRIKE_AT > '2000-01-01'
+)
+
+SELECT
+    LOCATION_ID,
+    TRAP_ID,
+    ADDRESS_LATITUDE,
+    ADDRESS_LONGITUDE,
+    FULL_ADDRESS,
+    FULL_ROAD_NAME,
+    SUBURB_LOCALITY,
+    TOWN_CITY,
+    TERRITORIAL_AUTHORITY,
+    ACTIVITY_TYPE,
+    FORMAT_DATE('%Y-%m', CAST(STRIKE_AT AS TIMESTAMP)) STRIKED_YEAR_MONTH,
+    FORMAT_DATE('%m', CAST(STRIKE_AT AS TIMESTAMP)) STRIKED_MONTH,
+    FORMAT_DATE('%Y', CAST(STRIKE_AT AS TIMESTAMP)) STRIKED_YEAR,
+    COUNT(STRIKE_AT) AS NUM_KILLS,
+    CREATED_BY
+FROM trap_records
+GROUP BY LOCATION_ID,
+    TRAP_ID,
+    ADDRESS_LATITUDE,
+    ADDRESS_LONGITUDE,
+    FULL_ADDRESS,
+    FULL_ROAD_NAME,
+    SUBURB_LOCALITY,
+    TOWN_CITY,
+    TERRITORIAL_AUTHORITY,
+    ACTIVITY_TYPE,
+    STRIKED_YEAR_MONTH,
+    STRIKED_MONTH,
+    STRIKED_YEAR,
+    CREATED_BY;
+
+
+[0m20:06:43.053007 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:06:44.411269 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=qut-data-analytics-capstone&j=bq:australia-southeast1:2314dab7-58e7-400f-888a-49bc8faa4304&page=queryresults
+[0m20:06:45.173675 [info ] [Thread-1 (]: 1 of 1 OK created sql view model goodnature.fct_nz_monthly_kills ............... [[32mCREATE VIEW (0 processed)[0m in 2.14s]
+[0m20:06:45.174081 [debug] [Thread-1 (]: Finished running node model.goodnature_analysis.fct_nz_monthly_kills
+[0m20:06:45.174790 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m20:06:45.175646 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:06:45.175820 [debug] [MainThread]: Connection 'model.goodnature_analysis.fct_nz_monthly_kills' was properly closed.
+[0m20:06:45.175961 [debug] [MainThread]: Connection 'list_qut-data-analytics-capstone_goodnature_public' was properly closed.
+[0m20:06:45.176110 [info ] [MainThread]: 
+[0m20:06:45.176278 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 4.46 seconds (4.46s).
+[0m20:06:45.176601 [debug] [MainThread]: Command end result
+[0m20:06:45.194608 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/jacktoke/Codes/QUT/qut-data-analytics-duckdb-final/goodnature_analysis/target/manifest.json
+[0m20:06:45.195920 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/jacktoke/Codes/QUT/qut-data-analytics-duckdb-final/goodnature_analysis/target/semantic_manifest.json
+[0m20:06:45.198981 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/jacktoke/Codes/QUT/qut-data-analytics-duckdb-final/goodnature_analysis/target/run_results.json
+[0m20:06:45.199210 [info ] [MainThread]: 
+[0m20:06:45.199438 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:06:45.199610 [info ] [MainThread]: 
+[0m20:06:45.199794 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m20:06:45.200104 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 9.841406, "process_in_blocks": "0", "process_kernel_time": 0.811469, "process_mem_max_rss": "464977920", "process_out_blocks": "0", "process_user_time": 5.340475}
+[0m20:06:45.200337 [debug] [MainThread]: Command `dbt run` succeeded at 20:06:45.200302 after 9.84 seconds
+[0m20:06:45.200521 [debug] [MainThread]: Flushing usage events

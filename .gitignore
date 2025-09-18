@@ -8,9 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
-goodnature_analysis/seeds/australian_suburbs.csv
-goodnature_analysis/seeds/goodnature_trap_data.csv
-goodnature_analysis/seeds/nz_addresses.csv
+goodnature_analysis/seeds/
+goodnature_analysis/dbt_internal_packages/
 .streamlit/
-.streamlit/secrets.toml
 .env

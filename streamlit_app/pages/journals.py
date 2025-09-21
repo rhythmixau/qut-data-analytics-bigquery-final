@@ -1,5 +1,6 @@
 import streamlit as st
 
+st.set_page_config(layout="wide")
 st.title("Project Journal")
 st.markdown("### Module 1")
 st.markdown("##### 27 July 2025")
@@ -165,16 +166,31 @@ st.markdown("""
 We can now visualise the data, but since data are not available for every suburb, there are empty spaces in the map.
 A solution to that maybe to apply default values where there are no trap data and set the number of kills to 0.  Doing
 this will allow us to see the suburbs where there is no data beside those with some values.
+""")
+col1, col2 = st.columns(2)
+with col1:
+        st.image("streamlit_app/images/suburb_level_chloropleth.jpg", caption="Suburb level chloropleth - Central Hawke's Bay", width=350)
+with col2:
+        st.image("streamlit_app/images/suburb_level_chloropleth2.jpg", caption="Suburb level chloropleth", width=350)
 
-After adding the default 0 to suburbs where there is no data, I can see that much of the suburbs in a large proportion
-of the territories do not have data, even if that is changing over the years.  It is probably better to zoom out and
+st.markdown("""
+After adding the default values, i.e. 0, to suburbs where there is no data, I can see that much of the suburbs in a
+large proportion of the territories do not have data, even if that is changing over the years.  It is probably better
+to zoom out and view the statistics at territory level.
 """)
 
 st.markdown("### Module 7")
 st.markdown("##### 14 September 2025")
-
+st.image("streamlit_app/images/territory_level_chloropleth.jpg", caption="Territory level chloropleth")
+st.markdown("""
+Now that we can see the big picture of the statistics,  we can start analysing the data.
+""")
+st.image("streamlit_app/images/kiwi_habitats.png", caption="https://savethekiwi.nz/about-kiwi/where-to-see-kiwi/")
 st.markdown("### Module 8")
 st.markdown("##### 21 September 2025")
+st.markdown("""
+Complete the project report
+""")
 
 # rates, proportions and percentage
 # Circular or periodic data

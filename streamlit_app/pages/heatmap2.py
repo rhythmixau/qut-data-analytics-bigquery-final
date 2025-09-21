@@ -96,8 +96,6 @@ with open(f"streamlit_app/data/nz_territorial_boundary_map.json", "r") as f:
 
 st.set_page_config(layout="wide")
 
-
-
 if len(territorial_stats) > 0:
     match selected_measure:
         case "NUM_KILLS":

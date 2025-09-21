@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+    - name: gcp_cloud
+      database: qut-data-analytics-capstone
+      schema: goodnature
+      tables:
+        - name: territorial_authorities

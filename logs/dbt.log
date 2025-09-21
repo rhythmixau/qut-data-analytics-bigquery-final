@@ -43,3 +43,17 @@ Runtime Error
 [0m20:15:44.768456 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106887230>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107634c80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107635460>]}
 [0m20:15:44.768799 [debug] [MainThread]: Flushing usage events
 [0m20:15:46.050938 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:25:37.554862 [debug] [MainThread]: Got an exception trying to initialize tracking
+
+
+============================== 14:25:37.575306 | 9bf24cb2-9d49-45f3-9f27-149893d00e2e ==============================
+[0m14:25:37.575306 [info ] [MainThread]: Running with dbt=1.10.11
+[0m14:25:37.575838 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'use_colors': 'True', 'empty': 'None', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'introspect': 'True', 'warn_error': 'None', 'version_check': 'True', 'partial_parse': 'True', 'invocation_command': 'dbt seed --select territorial_authority_2025', 'fail_fast': 'False', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': 'logs', 'indirect_selection': 'eager', 'static_parser': 'True', 'log_cache_events': 'False', 'target_path': 'None', 'profiles_dir': '/Users/jacktoke/.dbt', 'cache_selected_only': 'False', 'debug': 'False', 'no_print': 'None', 'printer_width': '80', 'log_format': 'default'}
+[0m14:25:37.576177 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /Users/jacktoke/Codes/QUT/qut-data-analytics-duckdb-final/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m14:25:37.576551 [debug] [MainThread]: Resource report: {"command_name": "seed", "command_success": false, "command_wall_clock_time": 0.043329876, "process_in_blocks": "0", "process_kernel_time": 0.111201, "process_mem_max_rss": "102694912", "process_out_blocks": "0", "process_user_time": 0.56157}
+[0m14:25:37.576808 [debug] [MainThread]: Command `dbt seed` failed at 14:25:37.576768 after 0.04 seconds
+[0m14:25:37.576971 [debug] [MainThread]: Flushing usage events

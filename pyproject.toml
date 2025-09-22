@@ -14,5 +14,6 @@ dependencies = [
     "pandas>=2.3.2",
     "plotly>=6.3.0",
     "plotly-express>=0.4.1",
+    "scikit-learn>=1.7.2",
     "streamlit>=1.49.1",
 ]

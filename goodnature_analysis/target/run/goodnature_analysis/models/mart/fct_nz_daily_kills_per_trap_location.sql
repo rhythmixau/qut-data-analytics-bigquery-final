@@ -1,0 +1,15 @@
+
+
+  create or replace view `qut-data-analytics-capstone`.`goodnature`.`fct_nz_daily_kills_per_trap_location`
+  OPTIONS()
+  as SELECT
+  FORMAT_DATE('%Y', CAST(STRIKE_AT AS TIMESTAMP)) as STRIKED_YEAR,
+  TRAP_LONGITUDE,
+  TRAP_LATITUDE,
+  COUNT(DISTINCT STRIKE_AT) AS NUM_KILLS,
+  COUNT(DISTINCT TRAP_ID) AS NUM_TRAPS
+FROM `qut-data-analytics-capstone`.`goodnature`.`int_trap_details`
+WHERE ACTIVITY_TYPE = 'STRIKE' AND STRIKE_AT IS NOT NULL
+GROUP BY STRIKED_YEAR, TRAP_LONGITUDE, TRAP_LATITUDE
+ORDER BY NUM_KILLS DESC, NUM_TRAPS DESC;
+

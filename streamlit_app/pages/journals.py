@@ -499,7 +499,75 @@ There's definitely growth in the whole country but some areas have seen more gro
 Mount Aspiring National Park and Ōkārito may need some more attention.
 
 """)
+
 st.markdown("""
+I have created a new plot using Scatter Plot Map.  I think this will give us the most accurate understanding of the
+situation, as it doesn't take away the detail of what's happening on the ground.  I have simply sum up the number of
+kills and traps per GPS coordinate.  We can partition the visualisation by the year and we can see the change after
+each year.
+""")
+
+st.code("""
+SELECT
+  FORMAT_DATE('%Y', CAST(STRIKE_AT AS TIMESTAMP)) as STRIKED_YEAR,
+  TRAP_LONGITUDE,
+  TRAP_LATITUDE,
+  COUNT(DISTINCT STRIKE_AT) AS NUM_KILLS,
+  COUNT(DISTINCT TRAP_ID) AS NUM_TRAPS
+FROM {{ ref('int_trap_details') }}
+WHERE ACTIVITY_TYPE = 'STRIKE' AND STRIKE_AT IS NOT NULL
+GROUP BY STRIKED_YEAR, TRAP_LONGITUDE, TRAP_LATITUDE
+ORDER BY NUM_KILLS DESC, NUM_TRAPS DESC
+""")
+st.markdown("#### The result:")
+st.image("streamlit_app/images/scatter_plot_map.jpg", caption="Scatter Plot Map")
+
+st.markdown("""
+To achieve this, I have normalised the number of kills and the number of traps.  So when some locations have a really
+high number of kills or number of traps, then the rest of locations with just a few kills become very hard to see.
+Normalising the values give us a good range to plot without losing or distorting the meaning of the data.
+""")
+st.code("""
+query = f'
+SELECT
+  *
+FROM `goodnature.fct_nz_daily_kills_per_trap_location`
+WHERE STRIKED_YEAR = '{selected_year}'
+'
+
+data = run_query(query)
+
+df = pd.DataFrame(data)
+min_kills = df["NUM_KILLS"].min()
+max_kills = df["NUM_KILLS"].max()
+min_traps = df["NUM_TRAPS"].min()
+max_traps = df["NUM_TRAPS"].max()
+df["NORM_KILLS"] = preprocessing.normalize(df[["NUM_KILLS"]], axis=0)*25
+df["NORM_TRAPS"] = preprocessing.normalize(df[["NUM_KILLS"]], axis=0)*25
+df["KILL_RATE"] = round(df["NUM_KILLS"] / df["NUM_TRAPS"], 2)
+df["TEXT"] = 'Number of kills: ' + df["NUM_KILLS"].astype(str) + ', Number of traps:' + df["NUM_TRAPS"].astype(str)
+
+with open(f"streamlit_app/data/nz_territorial_boundary_map.json", "r") as f:
+    geo_json = json.load(f)
+
+fig = px.scatter_map(
+    df,
+    lon=df["TRAP_LONGITUDE"],
+    lat=df["TRAP_LATITUDE"],
+    hover_name=df["TEXT"],
+    hover_data=["NUM_KILLS", "NUM_TRAPS", "KILL_RATE"],
+    color = df['NORM_TRAPS'],
+    size=df['NORM_KILLS'],
+    color_continuous_scale=px.colors.sequential.Sunsetdark_r,
+    size_max=25,
+    zoom=4,
+    height=800
+)
+
+st.plotly_chart(fig)
+""")
+st.markdown("""
+
 To-do list:
 1. Analyse the trap data and see which area may need more focus.
 2. Complete the project report

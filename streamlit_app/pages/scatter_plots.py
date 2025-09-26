@@ -31,7 +31,7 @@ max_kills = df["NUM_KILLS"].max()
 min_traps = df["NUM_TRAPS"].min()
 max_traps = df["NUM_TRAPS"].max()
 df["NORM_KILLS"] = preprocessing.normalize(df[["NUM_KILLS"]], axis=0)*25
-df["NORM_TRAPS"] = preprocessing.normalize(df[["NUM_KILLS"]], axis=0)*25
+df["NORM_TRAPS"] = preprocessing.normalize(df[["NUM_TRAPS"]], axis=0)*25
 df["KILL_RATE"] = round(df["NUM_KILLS"] / df["NUM_TRAPS"], 2)
 df["TEXT"] = 'Number of kills: ' + df["NUM_KILLS"].astype(str) + ', Number of traps:' + df["NUM_TRAPS"].astype(str)
 
@@ -44,13 +44,15 @@ fig = px.scatter_map(
     lat=df["TRAP_LATITUDE"],
     hover_name=df["TEXT"],
     hover_data=["NUM_KILLS", "NUM_TRAPS", "KILL_RATE"],
-    color = df['NORM_TRAPS'],
-    size=df['NORM_KILLS'],
+    color = df['NORM_KILLS'],
+    size=df['NORM_TRAPS'],
     color_continuous_scale=px.colors.sequential.Sunsetdark_r,
     size_max=25,
-    zoom=4,
-    height=800
+    center={"lat": -39.768510, "lon": 170.283173 },    zoom=5.5,
+    height=1500
 )
+# -39.768510, 170.283173
+
 
 st.plotly_chart(fig)
 

@@ -12,3 +12,4 @@ goodnature_analysis/seeds/
 goodnature_analysis/dbt_internal_packages/
 .streamlit/
 .env
+goodnature_analysis/target/

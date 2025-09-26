@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(layout="wide")
 st.title("Project Journal")
 st.markdown("### Module 1")
-st.markdown("##### 27 July 2025 - Jack Toke []")
+st.markdown("##### 27 July 2025 - Jack Toke")
 st.markdown("""
 Goodnature, a New Zealand-based company, manufactures traps that humanely kill mice and rats. Unlike traditional
 poisons or methods that cause prolonged suffering, these traps are designed for an instant kill.
